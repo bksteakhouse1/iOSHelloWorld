@@ -1,2 +1,3 @@
-appcenter apps set-current brandon-krett-7j1f/HelloWorld --token 7966e518a0b77b32597e9408c987b1e20a7187a1
-appcenter build queue -b master --token 7966e518a0b77b32597e9408c987b1e20a7187a1
+EXPORT APPCENTER_ACCESS_TOKEN=7966e518a0b77b32597e9408c987b1e20a7187a1
+appcenter apps set-current brandon-krett-7j1f/HelloWorld
+appcenter build queue -b master
