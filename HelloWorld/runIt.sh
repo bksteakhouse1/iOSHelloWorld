@@ -1,3 +1,0 @@
-export APPCENTER_ACCESS_TOKEN=7966e518a0b77b32597e9408c987b1e20a7187a1
-export MOBILE_CENTER_CURRENT_APP=brandon-krett-7j1f/HelloWorld
-appcenter build queue -b master
