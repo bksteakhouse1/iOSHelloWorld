@@ -20,8 +20,6 @@ while true; do
 	if [ "$FAILED" = "1" ]; then 
 		break
 	fi	
-	printf "$SUCCESS $FAILED\n"	
-
 done
 
 FINAL="$(appcenter build branches show -b master)"
