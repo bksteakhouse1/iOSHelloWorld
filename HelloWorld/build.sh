@@ -8,16 +8,24 @@ FAILED="0"
 SUCCESS="0"
 STATUS="$(appcenter build branches show -b master | grep 'Build status:')"
 
-while [ "$FAILED" != "1" ] | [ "$SUCCESS" != "1" ]; do
+while true; do
+	STATUS="$(appcenter build branches show -b master | grep 'Build status:')"
 	printf "$STATUS\n"
 	sleep 5 #sleep for 5 seconds before querying AWS again
 	SUCCESS="$(appcenter build branches show -b master | grep -c 'Build result:\s*succeeded')"
+	if [ "$SUCCESS" = "1" ]; then 
+		break
+	fi
 	FAILED="$(appcenter build branches show -b master | grep -c 'Build result:\s*failed')"
-	STATUS="$(appcenter build branches show -b master | grep 'Build status:')"
+	if [ "$FAILED" = "1" ]; then 
+		break
+	fi	
+	printf "$SUCCESS $FAILED\n"	
 
 done
 
 FINAL="$(appcenter build branches show -b master)"
+printf "$FINAL\n"
 if [ "$FAILED" = "1" ]; then 
 	exit 1
 fi
